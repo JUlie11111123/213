@@ -10,10 +10,10 @@ import pygame
 import webbrowser
 global location,money,security,player_money
 def initialize_steam_api():
-    # Placeholder for initializing the Steam API
+    # Placeholder for initializing the Steam API.
     steam.init()
 def authenticate_user():
-    # Placeholder for authenticating the user using Steam API
+    # Placeholder for authenticating the user using Steam API.
     user_id = steam.get_user_id()
     if user_id:
         print("User authenticated successfully.\n")
@@ -26,7 +26,7 @@ def text_to_speech(text):
     # Set properties (optional).
     engine.setProperty('rate', 140)  # Speed of speech.
     engine.setProperty('volume', 0.7)  # Volume (0.0 to 1.0).
-    # Convert text to speech
+    # Convert text to speech.
     engine.say(text)
     # Wait for speech to finish.
     engine.runAndWait()
@@ -79,7 +79,7 @@ foodnstuff_money = 10000
 bank_money = 1000000
 bank_security = 100
 
-# Function to save game state
+# Function to save game state.
 def save_game():
     # Create a dictionary containing the game state.
     game_state = {
@@ -93,7 +93,7 @@ def save_game():
         'foodnstuff_money': foodnstuff_money,
         'bank_money': bank_money,
         'bank_security': bank_security,
-        'last_played': time.time()  # Add last played timestamp
+        'last_played': time.time()  # Add last played timestamp.
     }
 
     # Opens a file in binary write mode.
@@ -126,13 +126,13 @@ def load_game():
         foodnstuff_money = game_state['foodnstuff_money']
         bank_money = game_state['bank_money']
         bank_security = game_state['bank_security']
-        last_played = game_state.get('last_played', 0)  # Get last played timestamp
+        last_played = game_state.get('last_played', 0)  # Get last played timestamp.
 
-        # Calculate idle earnings based on elapsed time since last played
+        # Calculate idle earnings based on elapsed time since last played.
         elapsed_time = time.time() - last_played
         idle_earnings = calculate_idle_earnings(elapsed_time)
 
-        # Add idle earnings to player's money
+        # Add idle earnings to player's money.
         player_money += idle_earnings
 
         print('\033[32m' + "Game loaded.\n" + '\033[0m')
@@ -143,10 +143,10 @@ def load_game():
         text = "No saved game found."
         text_to_speech(text)
 
-# Function to calculate idle earnings based on elapsed time
+# Function to calculate idle earnings based on elapsed time.
 def calculate_idle_earnings(elapsed_time):
-    # Define your idle earnings logic here
-    # Example: Earn 1 money every hour
+    # Define your idle earnings logic here.
+    # Example: Earn 1 money every hour.
     eph = 1
     return (elapsed_time / 3600) * eph
 
